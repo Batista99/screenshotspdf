@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Execute Script</title>
+  <title>My Website</title>
 </head>
 <body>
+  <h1>Welcome to My Website</h1>
+
   <button id="executeButton">Execute Script</button>
 
   <script>
+    // Add an event listener to the button
     document.getElementById('executeButton').addEventListener('click', function() {
-      fetch('https://api.netlify.com/build_hooks/64b327bf29229957db067a13', { method: 'POST' })
+      // Send an HTTP POST request to the Express server route that triggers the script execution
+      fetch('/execute-script', { method: 'POST' })
         .then(function(response) {
-          console.log('Script executed successfully');
-          // Handle the response or perform any other actions
+          if (response.ok) {
+            console.log('Script execution started');
+          } else {
+            console.error('Failed to execute script');
+          }
         })
         .catch(function(error) {
           console.error('Error executing script:', error);
-          // Handle errors
         });
     });
   </script>
