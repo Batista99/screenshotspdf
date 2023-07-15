@@ -1,8 +1,10 @@
+const path = require('path');
 const { spawn } = require('child_process');
 
 exports.handler = function(event, context, callback) {
   try {
-    const scriptProcess = spawn('node', ['captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js']);
+    const scriptPath = path.join(__dirname, '../captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js');
+    const scriptProcess = spawn('node', [scriptPath]);
 
     scriptProcess.stdout.on('data', (data) => {
       console.log(`Script output: ${data}`);
