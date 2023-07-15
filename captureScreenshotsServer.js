@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.static('public')); // Serve the HTML file
 
-app.get('https://api.netlify.com/build_hooks/64b327bf29229957db067a13', (req, res) => {
+app.post('https://api.netlify.com/build_hooks/64b327bf29229957db067a13', (req, res) => {
   try {
     const scriptProcess = spawn('node', ['captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js']);
 
