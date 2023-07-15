@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Execute Script</title>
+</head>
+<body>
+  <button id="executeButton">Execute Script</button>
+
+  <script>
+    document.getElementById('executeButton').addEventListener('click', function() {
+      fetch('/execute-script')
+        .then(function(response) {
+          console.log('Script executed successfully');
+          // Handle the response or perform any other actions
+        })
+        .catch(function(error) {
+          console.error('Error executing script:', error);
+          // Handle errors
+        });
+    });
+  </script>
+</body>
+</html>
