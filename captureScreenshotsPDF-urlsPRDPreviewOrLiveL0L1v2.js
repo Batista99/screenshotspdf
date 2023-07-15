@@ -1,3 +1,5 @@
+console.log('captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js script execution started');
+
 const puppeteer = require('puppeteer');
 const { PDFDocument, StandardFonts } = require('pdf-lib');
 const fs = require('fs');

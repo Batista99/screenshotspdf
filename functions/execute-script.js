@@ -3,6 +3,7 @@ const { spawn } = require('child_process');
 
 exports.handler = function(event, context, callback) {
   try {
+    console.log('Starting captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js script execution');
     const scriptPath = path.join(process.cwd(), 'captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js');
     const scriptProcess = spawn('node', [scriptPath]);
 
@@ -18,7 +19,7 @@ exports.handler = function(event, context, callback) {
       console.log(`Script process exited with code ${code}`);
       callback(null, {
         statusCode: 200,
-        body: 'Script executed successfully',
+        body: 'Script execution completed',
       });
     });
   } catch (error) {
