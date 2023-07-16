@@ -23,6 +23,14 @@ exports.handler = function(event, context, callback) {
         body: 'Script execution completed',
       });
     });
+
+    scriptProcess.on('error', (error) => {
+      console.error('Script process error:', error);
+      callback(null, {
+        statusCode: 500,
+        body: 'Error executing script',
+      });
+    });
   } catch (error) {
     console.error('Error executing script:', error);
     callback(null, {
