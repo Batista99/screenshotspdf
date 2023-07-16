@@ -1,12 +1,8 @@
-const path = require('path');
 const { spawn } = require('child_process');
 
 exports.handler = async function(event, context) {
   try {
-    const scriptPath = path.join(__dirname, '..', '..', 'captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js');
-    console.log('Script path:', scriptPath);
-
-    const scriptProcess = spawn('node', [scriptPath], {
+    const scriptProcess = spawn('node', ['captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js'], {
       cwd: process.env.LAMBDA_TASK_ROOT,
       shell: true,
     });

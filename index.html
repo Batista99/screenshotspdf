@@ -11,20 +11,17 @@
   <script>
     // Add an event listener to the button
     document.getElementById('executeButton').addEventListener('click', function() {
-      // Send an AJAX request to the Netlify Function
-      fetch('/.netlify/functions/execute-script')
+      // Send an HTTP POST request to the Netlify function URL
+      fetch('https://candid-lamington-534d05.netlify.app/.netlify/functions/execute-script', { method: 'POST' })
         .then(function(response) {
           if (response.ok) {
             console.log('Script execution started');
-            // Handle the successful execution
           } else {
             console.error('Failed to execute script');
-            // Handle the failure
           }
         })
         .catch(function(error) {
           console.error('Error executing script:', error);
-          // Handle the error
         });
     });
   </script>
