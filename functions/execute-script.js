@@ -4,7 +4,10 @@ const { spawn } = require('child_process');
 exports.handler = function(event, context, callback) {
   try {
     console.log('Starting captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js script execution');
+
     const scriptPath = path.join(process.cwd(), 'captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js');
+    console.log('Script path:', scriptPath);
+
     const scriptProcess = spawn('node', [scriptPath]);
 
     scriptProcess.stdout.on('data', (data) => {
