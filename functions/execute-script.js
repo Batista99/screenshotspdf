@@ -3,7 +3,7 @@ const { spawn } = require('child_process');
 
 exports.handler = async function(event, context) {
   try {
-    const scriptPath = path.resolve(__dirname, '..', '..', 'captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js');
+    const scriptPath = path.join(__dirname, '..', '..', 'captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js');
     console.log('Script path:', scriptPath);
 
     const scriptProcess = spawn('node', [scriptPath], {
