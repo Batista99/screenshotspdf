@@ -6,6 +6,11 @@ exports.handler = function(event, context, callback) {
     const command = `node ${scriptPath}`;
 
     exec(command, (error, stdout, stderr) => {
+      console.log('Command:', command);
+      console.log('Error:', error);
+      console.log('Stdout:', stdout);
+      console.log('Stderr:', stderr);
+
       if (error) {
         console.error('Script error:', error);
         callback(null, {
