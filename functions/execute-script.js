@@ -6,7 +6,10 @@ exports.handler = function(event, context, callback) {
     const scriptPath = path.resolve(__dirname, '..', '..', 'captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js');
     console.log('Script path:', scriptPath);
 
-    const scriptProcess = spawn('node', [scriptPath]);
+    const scriptProcess = spawn('node', [scriptPath], {
+      cwd: '/var/task',
+      shell: true,
+    });
 
     scriptProcess.stdout.on('data', (data) => {
       console.log(`Script output: ${data}`);
