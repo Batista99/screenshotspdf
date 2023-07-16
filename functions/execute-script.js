@@ -3,11 +3,8 @@ const { spawn } = require('child_process');
 
 exports.handler = async function (event, context) {
   try {
-    const scriptPath = path.join(__dirname, 'captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js');
-    const scriptProcess = spawn('node', [scriptPath], {
-      cwd: process.env.LAMBDA_TASK_ROOT,
-      shell: true,
-    });
+    const scriptPath = path.join(process.cwd(), 'captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js');
+    const scriptProcess = spawn('node', [scriptPath]);
 
     scriptProcess.stdout.on('data', (data) => {
       console.log(`Script output: ${data}`);
