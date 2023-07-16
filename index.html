@@ -12,7 +12,7 @@
     // Add an event listener to the button
     document.getElementById('executeButton').addEventListener('click', function() {
       // Send an HTTP POST request to the Netlify function URL
-      fetch('https://candid-lamington-534d05.netlify.app/.netlify/functions/execute-script', { method: 'POST' })
+      fetch('https://candid-lamington-534d05.netlify.app/execute-script', { method: 'POST' })
         .then(function(response) {
           if (response.ok) {
             console.log('Script execution started');
