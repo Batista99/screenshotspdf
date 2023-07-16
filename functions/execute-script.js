@@ -2,6 +2,7 @@ const { spawn } = require('child_process');
 
 exports.handler = async function(event, context) {
   try {
+    console.log('Starting script execution...');
     const scriptProcess = spawn('node', ['captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js'], {
       cwd: process.env.LAMBDA_TASK_ROOT,
       shell: true,
