@@ -1,41 +1,33 @@
-const path = require('path');
-const { spawn } = require('child_process');
+const { exec } = require('child_process');
 
-exports.handler = async function (event, context) {
+exports.handler = function(event, context, callback) {
   try {
-    const scriptPath = path.join(process.cwd(), 'captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js');
-    const scriptProcess = spawn('node', [scriptPath]);
+    const scriptPath = 'captureScreenshotsPDF-urlsPRDPreviewOrLiveL0L1v2.js';
+    const command = `node ${scriptPath}`;
 
-    scriptProcess.stdout.on('data', (data) => {
-      console.log(`Script output: ${data}`);
-    });
-
-    scriptProcess.stderr.on('data', (data) => {
-      console.error(`Script error: ${data}`);
-    });
-
-    return new Promise((resolve, reject) => {
-      scriptProcess.on('close', (code) => {
-        console.log(`Script process exited with code ${code}`);
-        resolve({
-          statusCode: 200,
-          body: 'Script execution completed',
-        });
-      });
-
-      scriptProcess.on('error', (error) => {
-        console.error('Script process error:', error);
-        reject({
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        console.error('Script error:', error);
+        callback(null, {
           statusCode: 500,
           body: 'Error executing script',
         });
+        return;
+      }
+
+      console.log('Script output:', stdout);
+      console.error('Script error:', stderr);
+
+      callback(null, {
+        statusCode: 200,
+        body: 'Script execution completed',
       });
     });
   } catch (error) {
     console.error('Error executing script:', error);
-    return {
+    callback(null, {
       statusCode: 500,
       body: 'Error executing script',
-    };
+    });
   }
 };
